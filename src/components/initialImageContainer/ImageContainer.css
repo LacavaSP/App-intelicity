@@ -1,0 +1,29 @@
+#image-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-80%);
+  align-items: center;
+}
+
+img {
+  width: 360px;
+  height: 360px;
+  transition: 0.3s ease all;
+}
+
+span {
+  font-weight: lighter;
+  transition: 0.3s ease all;
+  font-size: 35px;
+}
+
+.greeting {
+  font-size: 30px;
+  font-weight: 100;
+  font-family: 'Ubuntu', sans-serif;
+}

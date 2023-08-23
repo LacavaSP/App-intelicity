@@ -1,0 +1,30 @@
+.img-foto {
+  height: 220px !important;
+  width: 220px !important;
+}
+
+ion-card {
+  --background: white;
+}
+
+.img-card-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-title {
+  --color: black;
+}
+
+ion-toolbar {
+  --ion-toolbar-background: #9623798e !important;
+}
+
+#choice-container {
+  width: 100vw;
+  display: flex;
+  margin-top: 40px;
+  padding: 10px;
+}

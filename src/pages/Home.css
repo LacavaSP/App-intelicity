@@ -1,0 +1,8 @@
+.pos-relative {
+  position: relative;
+  bottom: 15px;
+}
+
+.page {
+  background: linear-gradient(0deg, rgb(70, 70, 70) 0%, rgb(39, 39, 39) 43%, rgb(32, 29, 31) 100%) !important;
+}

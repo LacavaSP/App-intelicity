@@ -1,0 +1,10 @@
+.img-user {
+  width: 142px;
+  height: 142px;
+  transition: 0.3s ease all;
+}
+
+.container-img-user {
+  display: flex;
+  justify-content: center;
+}

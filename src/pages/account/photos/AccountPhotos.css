@@ -1,0 +1,142 @@
+ion-item {
+    --inner-border-width: 0px !important;
+}
+
+.form-container {
+    margin-top: 12vh;
+    width: 100%;
+}
+
+label {
+    text-align: center;
+}
+
+form {
+    margin-top: 40px;
+}
+
+ion-input {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.644);
+}
+
+:root {
+    --ion-toolbar-background: transparent !important;
+    --ion-toolbar-color: white;
+}
+
+ion-toolbar {
+    border-bottom: 0 !important;
+}
+
+ion-title {
+    text-align: center;
+    padding-inline: 0 !important;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+ion-toolbar {
+    border: 0 !important;
+}
+
+span {
+    font-size: 12px;
+}
+
+:host {
+    --ion-item-background: transparent !important;
+}
+
+ion-button {
+    --background: #96237a;
+    --background-hover: #96237a;
+    --background-activated: #c91898;
+    --background-focused: #c42199;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    --color: white;
+    width: 250px;
+    font-size: 20px;
+    --border-radius: 15px;
+    --border-color: rgba(255, 255, 255, 0);
+    --border-style: solid;
+    --border-width: 0px;
+    --box-shadow: 0 1px 1px 0 rgb(0, 0, 0, 0.25);
+    --ripple-color: deeppink;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+}
+
+.div-submit-button {
+    width: 100%;
+    display: flex;
+    margin-top: 55px;
+    justify-content: center;
+}
+
+.pos-relative {
+    position: relative;
+    bottom: 15px;
+} 
+
+.frontalCameraPreview {
+    width: 100vw;
+    border: 1px solid rgba(255, 255, 255, 0.603); 
+}    
+
+.frontal-overlap {
+    position: absolute;
+    width: 100vw;
+    top: 44px;
+    display: flex;
+    transition: 0.5s ease all;
+    justify-content: space-between;
+}
+
+div.frontal-overlap > div {
+    background-color: rgba(255, 255, 255, 0.404);
+    width: 10vw;
+    height: 100%;
+    min-height: 100%;
+}
+
+.user-photo-overlap {
+    transition: 0.5s ease all;
+    position: absolute;
+    top: 44px;
+    display: flex;
+    width: 100vw;
+    height: 281.75px;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-photo-overlap > div {
+    transform: scale(1.65);
+    opacity: 0.6;
+}
+
+.button-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-fw {
+    margin-left: 15px;
+}
+
+.result-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    transition: 0.5s ease all;
+}
+
+div#result > * {
+    width: 100%;
+    height: 100%;
+}
