@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Intelicity Reconhecimento</string>
-    <string name="title_activity_main">Intelicity Reconhecimento</string>
+    <string name="app_name">Intelicity Reconhecimentogit</string>
+    <string name="title_activity_main">Intelicity Reconhecimentogit</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
 </resources>

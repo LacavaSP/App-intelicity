@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'Intelicity Reconhecimentogit',
+  appName: 'Intelicity Reconhecimento',
   webDir: 'dist',
   server: {
     androidScheme: 'https'

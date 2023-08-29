@@ -3,26 +3,39 @@ import {IonAlert, IonButton, IonContent, IonFooter, IonInput, IonItem, IonLoadin
 import './Account.css';
 import UserIconImageContainer from "../../components/account/userIcon/UserIconImageContainer";
 import FooterLogo from "../../components/shared/FooterLogo";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { useAccountApi } from '../../hooks/account/useAccountApi';
 import { useHistory } from 'react-router-dom';
+import { Keyboard } from '@capacitor/keyboard';
 
 const Account: React.FC = () => {
     const history = useHistory();
     const [loading, showLoading] = useState<boolean>(false)
     const [nameError, showNameError] = useState<boolean>(false)
     const [nomeDigitado, setNomeDigitado] = useState<string | null>('')
+    const [isSubmiting, setIsSubmiting] = useState<boolean>(false)
 
     const {searchData} = useAccountApi()
 
+    useEffect(() => {
+         setNomeDigitado(null)
+         setIsSubmiting(false)
+         showLoading(false)
+      }, []); 
+
     const handleSubmit = async ()  => {
         if (nomeDigitado) {
-            showLoading(true);
+            showLoading(true)
+            setIsSubmiting(true)
             const nomesExistentesNaBase: string[] = await searchData();
             const nomeJaExisteNaBase = nomesExistentesNaBase.filter(nomeExistente => nomeExistente.toUpperCase() === nomeDigitado.toUpperCase()).length > 0
             if (nomeJaExisteNaBase) {
+                setIsSubmiting(false)
                 showNameError(true)
             } else {
+                setIsSubmiting(false)
+                const queryParam = nomeDigitado + ''
+                setNomeDigitado(null)
                 history.push('/photos?nome=' + nomeDigitado)
             }
             showLoading(false);
@@ -32,6 +45,12 @@ const Account: React.FC = () => {
     const handleInputChange = (event: CustomEvent) => {
        setNomeDigitado(event.detail.value)
     };
+
+    const handleKeyPress = (event: any) => {
+        if (event.key === "Enter") {
+            Keyboard.hide()
+        }
+    }
 
     const handleAlertDismiss = () => {
         setNomeDigitado(null);
@@ -43,14 +62,14 @@ const Account: React.FC = () => {
             <IonContent fullscreen>
                 <div className="form-container">
                     <UserIconImageContainer/>
-                    <form>
+                   
                         <IonItem>
-                            <IonInput value={nomeDigitado} onIonInput={handleInputChange} placeholder="Insira seu nome de usuário"/>
+                            <IonInput onKeyDown={handleKeyPress} type="text" value={nomeDigitado} onIonInput={handleInputChange} placeholder="Insira seu nome de usuário"/>
                         </IonItem>
                         <div className="div-submit-button">
-                            <IonButton onClick={handleSubmit} expand="block" size="small">Prosseguir</IonButton>
+                            <IonButton disabled={isSubmiting} onClick={handleSubmit} expand="block" size="small">Prosseguir</IonButton>
                         </div>
-                    </form>
+               
 
                 </div>
                 <IonAlert
@@ -76,5 +95,7 @@ const Account: React.FC = () => {
         </IonPage>
     );
 };
-
+ 
 export default Account;
+ 
+

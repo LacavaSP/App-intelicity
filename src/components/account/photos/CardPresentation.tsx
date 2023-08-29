@@ -16,6 +16,12 @@ const CardPresentation: React.FC<any> = ({photos, onCancel}) => {
     const [confirmation, setConfirmation] = useState<boolean>(false)
     const history = useHistory()
 
+
+    document.addEventListener('dataReset', event => {
+        setImgs([])
+        setConfirmation(false)
+    });
+
     useEffect(() => {
 
         if (imgs && imgs.length < 1) {
@@ -31,9 +37,8 @@ const CardPresentation: React.FC<any> = ({photos, onCancel}) => {
     const handleImagesSubmit = async () => {
         if (confirmation) {
             showLoading(true)
-            const imgsCopy = Object.assign(imgs)
+            const imgsCopy = Object.assign(JSON.parse(JSON.stringify(imgs)))
             imgsCopy.forEach((img: any) => {
-                console.log(img.img.split(',')[1])
                 img.img = img.img.split(',')[1];
             });
             

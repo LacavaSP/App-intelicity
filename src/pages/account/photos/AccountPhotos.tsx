@@ -18,12 +18,8 @@ export interface AccountPhoto {
 
 const AccountPhotos: React.FC = () => {
 
-    const overlapContainer = useRef(null);
-    const cameraContainer = useRef(null);
     const [loading, showLoading] = useState<boolean>(false)
     const params = new URLSearchParams(location.search)
-
-    let cameraActive = false
 
     const [imgs, setImgs] = useState<AccountPhoto[]>([])
     const [preparation, changePreparation] = useState<boolean>(true)
@@ -33,34 +29,35 @@ const AccountPhotos: React.FC = () => {
     const [alert, showAlert] = useState<boolean>(false)
     const [msg, setMsg] = useState<string | null>(null)
     const [userName, setUserName] = useState<string | null>(null)
-
-    const reset = () => {
-        setCardPresentation(false)
-        setPhotoType(null)
-        showAlert(false)
-        setMsg(null)
-        setPhotoBase64Data(null)
-        setImgs([])
-        setUserName(null)
-        cameraActive = false
-        setCardPresentation(true)
-    }
+    
+    document.addEventListener('dataReset', event => {
+        clearData();
+    });
 
     useEffect(() => {
     }, []);
 
     useIonViewDidEnter(() => {
-        setUserName(params.get('nome'))
-        setPhotoType('Frontal')
-        setMsg('Tente imitar a posição do desenho e clique no botão tirar foto.')
+        clearData()
     })
 
     useIonViewWillLeave(() => {
-        reset()
+        clearData()
     })
 
     const handleAlertDismiss = () => {
         showAlert(false)
+    }
+
+    const clearData = () => {
+        setImgs([])
+        showAlert(false)
+        setCardPresentation(false)
+        setUserName(params.get('nome'))
+        setPhotoType('Frontal')
+        setMsg('Tente imitar a posição do desenho e clique no botão tirar foto.')
+        changePreparation(true)
+        setPhotoBase64Data(null)
     }
 
     const takePhoto = async () => {
@@ -70,8 +67,6 @@ const AccountPhotos: React.FC = () => {
             resultType: CameraResultType.DataUrl,
             direction: CameraDirection.Front
           });
-      
- 
 
         const base64PictureData = result.dataUrl;
         const resultImgContainer = document.getElementById('result');
