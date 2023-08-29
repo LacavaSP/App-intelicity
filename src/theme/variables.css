@@ -1,6 +1,27 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 
+ion-button {
+  --background: #96237a;
+  --background-hover: #96237a;
+  --background-activated: #c91898;
+  --background-focused: #c42199;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  --color: white;
+  width: 250px;
+  font-size: 15px;
+  font-weight: lighter;
+  --border-radius: 15px;
+  --border-color: rgba(255, 255, 255, 0);
+  --border-style: solid;
+  --border-width: 0px;
+  --box-shadow: 0 1px 1px 0 rgb(0, 0, 0, 0.25);
+  --ripple-color: deeppink;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+
+
 ion-content{
   --ion-text-color: rgb(255, 255, 255);
   --background: linear-gradient(0deg, rgba(158,86,176,1) 0%, rgba(136,55,138,1) 43%, rgba(118,34,85,1) 100%);
@@ -13,7 +34,7 @@ ion-input {
 
 ion-toolbar {
   --ion-font-family: 'Ubuntu', sans-serif;
-}
+} 
 
 /** Ionic CSS Variables **/
 :root {
@@ -97,19 +118,19 @@ ion-toolbar {
    */
 
   body {
-    --ion-color-primary: #428cff;
+    --ion-color-primary: #7D398A;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255,255,255;
-    --ion-color-primary-shade: #3a7be0;
+    --ion-color-primary-shade: #411a49;
     --ion-color-primary-tint: #5598ff;
 
-    --ion-color-secondary: #50c8ff;
-    --ion-color-secondary-rgb: 80,200,255;
+    --ion-color-secondary: #A31052;
+    --ion-color-secondary-rgb: 61, 194, 255;
     --ion-color-secondary-contrast: #ffffff;
-    --ion-color-secondary-contrast-rgb: 255,255,255;
-    --ion-color-secondary-shade: #46b0e0;
-    --ion-color-secondary-tint: #62ceff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #8a0642;
+    --ion-color-secondary-tint: #50c8ff;
 
     --ion-color-tertiary: #6a64ff;
     --ion-color-tertiary-rgb: 106,100,255;

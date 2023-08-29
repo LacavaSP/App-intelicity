@@ -1,16 +1,15 @@
-import {IonAlert, IonButton, IonContent, IonFooter, IonLoading, IonPage, IonTitle, IonToolbar, useIonViewDidEnter, useIonViewWillLeave} from '@ionic/react';
+import {IonAlert, IonButton, IonContent, IonFooter, IonIcon, IonLoading, IonPage, IonTitle, IonToolbar, useIonViewDidEnter, useIonViewWillLeave} from '@ionic/react';
 
 import './AccountPhotos.css';
 import FooterLogo from '../../../components/shared/FooterLogo';
 import { useEffect, useRef, useState } from 'react';
-import { CameraPreview, CameraPreviewOptions, CameraPreviewPictureOptions } from '@capacitor-community/camera-preview';
-import '@capacitor-community/camera-preview'
 import UserIconImageContainer from '../../../components/account/userIcon/UserIconImageContainer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp, faBan, faCamera, faCheck, } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faBan, faCamera, faCheck, faSpinner, } from '@fortawesome/free-solid-svg-icons';
 import RightUserIconImageContainer from '../../../components/account/userIcon/RightUserIconImageContainer';
 import LeftUserIconImageContainer from '../../../components/account/userIcon/LeftUserIconImageContainer';
 import CardPresentation from '../../../components/account/photos/CardPresentation';
+import { Camera, CameraDirection, CameraResultType } from '@capacitor/camera';
 
 export interface AccountPhoto {
     img: string,
@@ -48,15 +47,12 @@ const AccountPhotos: React.FC = () => {
     }
 
     useEffect(() => {
-        if (!cameraActive) {
-            openCamera()
-        }
-      }, []);
+    }, []);
 
     useIonViewDidEnter(() => {
         setUserName(params.get('nome'))
         setPhotoType('Frontal')
-        setMsg('Tente centralizar seu rosto conforme a imagem')
+        setMsg('Tente imitar a posição do desenho e clique no botão tirar foto.')
     })
 
     useIonViewWillLeave(() => {
@@ -67,24 +63,19 @@ const AccountPhotos: React.FC = () => {
         showAlert(false)
     }
 
-    const openCamera = () => {
-        const cameraPreviewOptions: CameraPreviewOptions = {
-            position: 'rear',
-            parent: 'cameraPreview',
-            className: 'frontalCameraPreview',
-        }
-        CameraPreview.start(cameraPreviewOptions)
-        cameraActive = true
-    }
-
     const takePhoto = async () => {
-        const cameraPreviewPictureOptions: CameraPreviewPictureOptions = {
-            quality: 25
-          };
-        const result = await CameraPreview.capture(cameraPreviewPictureOptions);
-        const base64PictureData = result.value;
+        const result = await Camera.getPhoto({
+            quality: 10,
+            allowEditing: false,
+            resultType: CameraResultType.DataUrl,
+            direction: CameraDirection.Front
+          });
+      
+ 
+
+        const base64PictureData = result.dataUrl;
         const resultImgContainer = document.getElementById('result');
-        setPhotoBase64Data(base64PictureData)
+        setPhotoBase64Data(base64PictureData!.toString())
         resultImgContainer!.style.opacity = '1'
     };
 
@@ -132,10 +123,7 @@ const AccountPhotos: React.FC = () => {
         if (hidde) {
             opacity = '0'
         }  
-        const overlap = document.getElementById('overlap')
         const userIcon = document.getElementById('user')
-        overlap!.style.height = document.getElementById('cameraPreview')!.children[0]!.clientHeight + 'px'
-        overlap!.style.opacity = opacity
         userIcon!.style.opacity = opacity
     }
 
@@ -173,20 +161,26 @@ const AccountPhotos: React.FC = () => {
                                 message={msg + ''}
                                 buttons={['OK']}
                         />
-
-                    <div id="cameraPreview" className="cameraPreview" ref={cameraContainer}></div>
-                    <div id="overlap" className='frontal-overlap' ref={overlapContainer} style={{opacity: '0'}}>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <div id="user" className='user-photo-overlap' style={{opacity: '0'}}>
-                        {
-                            photoType === 'Frontal' ?
-                                <UserIconImageContainer></UserIconImageContainer>
-                                : photoType === 'Lateral Direita' ? <RightUserIconImageContainer></RightUserIconImageContainer> : <LeftUserIconImageContainer></LeftUserIconImageContainer> 
+                
+                    <div id="user" className='user-photo-overlap' style={{opacity: '1'}}>
+                        {   
+                            preparation ? <>
+                                <div className='loadingContainer'>
+                                    <FontAwesomeIcon icon={faSpinner}/>
+                                </div>
+                            </> : 
+                            
+                            <>
+                             {
+                                photoType === 'Frontal' ?
+                                    <UserIconImageContainer></UserIconImageContainer>
+                                    : photoType === 'Lateral Direita' ? <RightUserIconImageContainer></RightUserIconImageContainer> : <LeftUserIconImageContainer></LeftUserIconImageContainer> 
+                                }
+                            </>
+                            
                         }
                     </div>
-                    <div className="button-container">
+                    <div className="button-container" style={{position: 'relative', zIndex: '50'}}>
                         {
                             !photoBase64Data ? 
                             <>
@@ -202,7 +196,22 @@ const AccountPhotos: React.FC = () => {
                     </div>
 
                     <div id='result' className='result-container' style={{opacity: '0'}}>
-                        <img src={'data:image/png;base64,' + photoBase64Data!}></img>
+                        <div>
+                            <img className='total-size-img' src={photoBase64Data!}></img>
+                        </div>
+                        <div id="user" className='user-photo-overlap-2' style={{opacity: '1', position: 'fixed', zIndex: '1', transform: 'scale(1.5)'}}>
+                            {   
+                                
+                                <>
+                                {
+                                    photoType === 'Frontal' ?
+                                        <UserIconImageContainer></UserIconImageContainer>
+                                        : photoType === 'Lateral Direita' ? <RightUserIconImageContainer></RightUserIconImageContainer> : <LeftUserIconImageContainer></LeftUserIconImageContainer> 
+                                    }
+                                </>
+                                
+                            }
+                        </div>
                     </div>
                     </>
                 :

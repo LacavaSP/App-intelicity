@@ -48,25 +48,6 @@ span {
     --ion-item-background: transparent !important;
 }
 
-ion-button {
-    --background: #96237a;
-    --background-hover: #96237a;
-    --background-activated: #c91898;
-    --background-focused: #c42199;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    --color: white;
-    width: 250px;
-    font-size: 20px;
-    --border-radius: 15px;
-    --border-color: rgba(255, 255, 255, 0);
-    --border-style: solid;
-    --border-width: 0px;
-    --box-shadow: 0 1px 1px 0 rgb(0, 0, 0, 0.25);
-    --ripple-color: deeppink;
-    --padding-top: 10px;
-    --padding-bottom: 10px;
-}
-
 .div-submit-button {
     width: 100%;
     display: flex;

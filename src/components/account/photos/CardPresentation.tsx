@@ -90,14 +90,14 @@ const CardPresentation: React.FC<any> = ({photos, onCancel}) => {
 
                     <IonCardContent>
                         <div className='img-card-container'>
-                            <img alt={item.name} src={'data:image/png;base64,' + item.img} className='img-foto' />
+                            <img alt={item.name} src={item.img} className='img-foto' />
                         </div>
                     </IonCardContent>
                 </IonCard>
           
         ))}
       </IonList>
-        </> : <><div onClick={() => console.log(imgs)}>erro</div></>
+        </> : <><div onClick={() => console.log(imgs)}></div></>
     );
 };
 

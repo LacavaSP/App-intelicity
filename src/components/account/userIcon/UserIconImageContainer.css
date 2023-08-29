@@ -1,10 +1,12 @@
-.img-user {
-  width: 142px;
-  height: 142px;
+.frontal-img-user {
+  width: 100px;
+  height: 100px;
   transition: 0.3s ease all;
 }
 
 .container-img-user {
+  margin-top: 30px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
 }
