@@ -31,7 +31,7 @@ const AccountPhotos: React.FC = () => {
     const [userName, setUserName] = useState<string | null>(null)
     
     document.addEventListener('dataReset', event => {
-        clearData();
+        clearData()
     });
 
     useEffect(() => {
