@@ -65,7 +65,7 @@ const AccountPhotos: React.FC = () => {
 
     const takePhoto = async () => {
         const result = await Camera.getPhoto({
-            quality: 10,
+            quality: 2,
             allowEditing: false,
             resultType: CameraResultType.DataUrl,
             direction: CameraDirection.Front

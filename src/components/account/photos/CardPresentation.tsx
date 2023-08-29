@@ -31,9 +31,30 @@ const CardPresentation: React.FC<any> = ({photos, onCancel}) => {
     const handleImagesSubmit = async () => {
         if (confirmation) {
             showLoading(true)
-            await submitImg(imgs[0])
-            await submitImg(imgs[1])
-            await submitImg(imgs[2])
+            const imgsCopy = Object.assign(imgs)
+            imgsCopy.forEach((img: any) => {
+                console.log(img.img.split(',')[1])
+                img.img = img.img.split(',')[1];
+            });
+            
+            try {
+                await submitImg(imgsCopy[0])
+            } catch(error) {
+                console.log(error)
+            }
+            
+            try {
+                await submitImg(imgsCopy[1])
+            } catch(error) {
+                console.log(error)
+            }
+
+            try {
+                await submitImg(imgsCopy[2])
+            } catch(error) {
+                console.log(error)
+            }
+             
             showLoading(false)
             history.push('/home')
         } else {

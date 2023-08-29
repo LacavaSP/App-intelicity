@@ -6,8 +6,7 @@ export const useAccountPhotosApi = () => {
 
     const submitImg = async (data: AccountPhoto): Promise<any> => {
         let result = null
-        console.log(JSON.stringify(data))
-        try {
+  
             const requestBody = JSON.stringify(data);
       
             const response = await fetch(url, {
@@ -20,9 +19,6 @@ export const useAccountPhotosApi = () => {
       
             const responseData = await response.json();
             result = responseData 
-          } catch (error) {
-            console.error('Erro na requisição:', error);
-          }
           
           return result
     }
