@@ -6,3 +6,37 @@
 .page {
   background: linear-gradient(0deg, rgb(70, 70, 70) 0%, rgb(39, 39, 39) 43%, rgb(32, 29, 31) 100%) !important;
 }
+
+@media screen and (min-height: 1900px) {
+
+  .toolbar-title {
+    display: block;
+    width: 100%;
+    font-size: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: auto;
+  }
+
+  .copyright {
+    font-size: 22px;
+  }
+
+  .title-default {
+    font-size: 40px;
+  }
+
+  ion-alert, ion-loading {
+    transform: scale(2.5);
+  }
+
+  .greeting {
+    font-size: 110px;
+  }
+
+  .logo-intelicity-home {
+    height: 600px;
+    width: 600px;
+  }
+}

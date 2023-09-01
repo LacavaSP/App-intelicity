@@ -179,19 +179,20 @@ const AccountPhotos: React.FC = () => {
                         {
                             !photoBase64Data ? 
                             <>
-                                <IonButton color="primary" onClick={preparation ? prepareOverlap : takePhoto}>{preparation ? 'Começar' : 'Tirar Foto'}  <FontAwesomeIcon className='icon-fw' icon={preparation ? faArrowUp : faCamera} /></IonButton>
+                                <IonButton className='accountPhotosButton' color="primary" onClick={preparation ? prepareOverlap : takePhoto}>{preparation ? 'Começar' : 'Tirar Foto'}  <FontAwesomeIcon className='icon-fw' icon={preparation ? faArrowUp : faCamera} /></IonButton>
                             </>
                             : 
                             <>
-                                <IonButton color="primary" onClick={postPictureConfirmation}>Prosseguir  <FontAwesomeIcon className='icon-fw' icon={faCheck} /></IonButton>
-                                <IonButton color="secondary" onClick={cancel}>Cancelar  <FontAwesomeIcon className='icon-fw' icon={faBan} /></IonButton>
+                                <IonButton className='accountPhotosButton' color="primary" onClick={postPictureConfirmation}>Prosseguir  <FontAwesomeIcon className='icon-fw' icon={faCheck} /></IonButton>
+                                <IonButton className='accountPhotosButton' color="secondary" onClick={cancel}>Cancelar  <FontAwesomeIcon className='icon-fw' icon={faBan} /></IonButton>
                             </>
                         }
                         
                     </div>
 
                     <div id='result' className='result-container' style={{opacity: '0'}}>
-                        <div>
+                     
+                        <div id="user" className='overlap-foto-pessoa' >
                             <img className='total-size-img' src={photoBase64Data!}></img>
                         </div>
                         <div id="user" className='user-photo-overlap-2' style={{opacity: '1', position: 'fixed', zIndex: '1', transform: 'scale(1.5)'}}>
@@ -220,7 +221,7 @@ const AccountPhotos: React.FC = () => {
                 <IonToolbar no-border>
                     <IonTitle>
                         <FooterLogo/>
-                        <span className='pos-relative'>© 2022-2023 Intelicity. Todos os direitos reservados.</span>
+                        <span className='pos-relative copyright'>© 2022-2023 Intelicity. Todos os direitos reservados.</span>
                     </IonTitle>
                 </IonToolbar>
             </IonFooter>

@@ -10,3 +10,14 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (min-height: 1900px) {
+
+  .img-user-query {
+
+  }
+
+  .form-container {
+    margin-top: 3vh !important;
+  }
+}

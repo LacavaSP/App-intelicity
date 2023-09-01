@@ -101,17 +101,17 @@ const CardPresentation: React.FC<any> = ({photos, onCancel}) => {
                 message={'Aguarde...'}
             />
             <div id="choice-container">
-                <IonButton onClick={handleImagesSubmit} color="primary">Salvar  <FontAwesomeIcon className='icon-fw' icon={faSave} /></IonButton>
-                <IonButton onClick={handleOnCancel} color="secondary">Cancelar  <FontAwesomeIcon className='icon-fw' icon={faBan} /></IonButton>
+                <IonButton className='accountPhotosButton' onClick={handleImagesSubmit} color="primary">Salvar  <FontAwesomeIcon className='icon-fw' icon={faSave} /></IonButton>
+                <IonButton className='accountPhotosButton' onClick={handleOnCancel} color="secondary">Cancelar  <FontAwesomeIcon className='icon-fw' icon={faBan} /></IonButton>
             </div>
             
-            <IonList>
+            <IonList className='photo-list'>
         {imgs.map((item, index) => (
 
-                <IonCard>
+                <IonCard className='photo-list-img'>
 
                     <IonCardHeader>
-                        <IonCardSubtitle>{index === 0 ? 'Frontal' : index === 1 ? 'Lateral Direita' : 'Lateral Esquerda'}</IonCardSubtitle>
+                        <IonCardSubtitle class='photo-title'>{index === 0 ? 'Frontal' : index === 1 ? 'Lateral Direita' : 'Lateral Esquerda'}</IonCardSubtitle>
                     </IonCardHeader>
 
                     <IonCardContent>

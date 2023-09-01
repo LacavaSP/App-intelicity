@@ -158,3 +158,42 @@ div#result > * {
         transform: rotate(360deg); /* Fim da animação */
     }
 }
+
+.overlap-foto-pessoa {
+    transition: 0.5s ease all;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-height: 1900px) {
+    .overlap-foto-pessoa  {
+        transform: scale(3);
+    }
+    
+    .result-container {
+        height: 60vh;
+    }
+
+    .accountPhotosButton {
+        width: 550px;
+        font-size: 49px;
+        margin: 10px;
+        margin-top: 30px;
+    }
+
+    .user-photo-overlap-2 {
+        transform: scale(4.25) !important;
+    }
+
+    .user-photo-overlap {
+        margin: 100px 0px;
+        transform: scale(2.1);
+    }
+
+    .photo-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
