@@ -139,7 +139,7 @@ const AccountPhotos: React.FC = () => {
     return (
         <IonPage>
             <IonToolbar>
-                <IonTitle>{!cardPresentation ? 'Captura ' + photoType : 'Confirmação de Envio'}</IonTitle>
+                <IonTitle>{!cardPresentation ? 'Captura ' + photoType : 'Confirmação Envio'}</IonTitle>
             </IonToolbar>
             <IonContent fullscreen>
                 {
