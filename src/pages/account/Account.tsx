@@ -27,7 +27,19 @@ const Account: React.FC = () => {
         if (nomeDigitado) {
             showLoading(true)
             setIsSubmiting(true)
-            const nomesExistentesNaBase: string[] = await searchData();
+            window.alert('debugando..')
+            let nomesExistentesNaBase: string[] = []
+
+            try{
+                nomesExistentesNaBase = await searchData();
+            } catch(error) {
+                window.alert(error)
+                showLoading(false)
+                setIsSubmiting(false)
+            }
+
+            window.alert(nomesExistentesNaBase)
+            window.alert('http://10.15.20.11:1880/face/getNames')
             const nomeJaExisteNaBase = nomesExistentesNaBase.filter(nomeExistente => nomeExistente.toUpperCase() === nomeDigitado.toUpperCase()).length > 0
             if (nomeJaExisteNaBase) {
                 setIsSubmiting(false)
@@ -38,7 +50,8 @@ const Account: React.FC = () => {
                 setNomeDigitado(null)
                 history.push('/photos?nome=' + nomeDigitado)
             }
-            showLoading(false);
+
+            showLoading(false);   
         }
     }
 
