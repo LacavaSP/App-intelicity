@@ -2,7 +2,7 @@ import { AccountPhoto } from "../../../pages/account/photos/AccountPhotos";
 
 
 export const useAccountPhotosApi = () => {
-    const url = 'https://api.geovista.com.br/ionic/SendImages'
+    const url = 'http://10.15.20.11:1880/face/SendImages'
 
     const submitImg = async (data: AccountPhoto): Promise<any> => {
         let result = null

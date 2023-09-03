@@ -1,7 +1,7 @@
 
 
 export const useAccountApi = () => {
-    const url = 'https://api.geovista.com.br/ionic/getNames/'
+    const url = 'http://10.15.20.11:1880/face/getNames'
 
     const searchData = async (): Promise<any> => {
        let result = null
